@@ -14,6 +14,24 @@
         {% endblock %}
     </head>
     <body>
+    <header>
+        <nav class="navbar navbar-light bg-light shadow">
+            <div class="container-fluid align-items-center">
+                <a class="navbar-brand">Ma super app</a>
+                <div class="d-flex justify-content-center">
+                    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                        <a href="{{ path('app_logout') }}" class="p-1">Logout</a>
+                    {% else %}
+                        <a href="{{ path('app_login') }}" class="p-1">sign in</a>
+                        <a href="{{ path('app_signup') }}" class="p-1">sign up</a>
+                    {% endif %}
+                </div>
+
+            </div>
+        </nav>
+    </header>
+    <div class="container mt-5">
         {% block body %}{% endblock %}
+    </div>
     </body>
 </html>
